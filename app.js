@@ -6,5 +6,9 @@ app.listen(3000, function() {
 });
 
 app.get('/', function(req,res,next) {
-  res.send('hi');
-})
+  res.send('hey');
+});
+
+app.get('/news', function(req,res,next) {
+  res.send('no news');
+});
