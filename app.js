@@ -31,9 +31,9 @@ app.use(function(req, res, next){
   next();
 });
 
-app.use(function(req, res, next){
-  
-})
+// app.use(function(req, res, next){
+
+// })
 // app.use('/special/', function(req,res,next) {
 //   console.log('this person is soooo special');
 //   next();
