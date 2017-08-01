@@ -15,7 +15,7 @@
 
       <!-- display tweets here -->
       <ul id="tweetlist">{% for tweet in tweets %}
-        <li><span class="tweet-name">{{tweet.name}}</span><img src='../images/alpaca.jpg'><br><span class="tweet-tweet">{{tweet.content}}</span></li>
+        <li><a href="/users/{{tweet.name}}" class="tweet-name">{{tweet.name}}</a>:<img src='../images/alpaca.jpg'><br><span class="tweet-tweet">{{tweet.content}}</span></li>
       {% endfor %}
       </ul>
 
