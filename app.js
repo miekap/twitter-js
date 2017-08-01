@@ -10,12 +10,13 @@ app.use(function(req, res, next){
   next();
 });
 
-app.get('/', function(req,res,next) {
-  res.send('hey');
+app.use('/special/', function(req,res,next) {
+  console.log('this person is soooo special');
+  next();
 });
 
-app.get('/news', function(req,res,next) {
-  res.send('no news');
+app.get('/', function(req,res,next) {
+  res.send('hey');
 });
 
 app.get('*', function(req, res, next){
