@@ -15,6 +15,12 @@ router.get('/users/:name', function(req, res) {
   res.render( 'index', { tweets: list } );
 });
 
+router.get('/tweets/:id', function(req, res) {
+  var id = +req.params.id;
+  var uniqueId = tweetBank.find( {id: id} );
+  res.render( 'index', { tweets: uniqueId } );
+});
+
 // gets the stylesheet
 // router.get('/stylesheets/style.css', function (req, res) {
 //   res.sendFile(path.join(__dirname, '../public/stylesheets/style.css'));
