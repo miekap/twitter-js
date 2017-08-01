@@ -2,38 +2,44 @@ const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
+const body = require('body-parser');
 
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Gandalf'},
-        { name: 'Frodo' },
-        { name: 'Hermione'}
-    ]
-};
-const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+// var locals = {
+//     title: 'An Example',
+//     people: [
+//         { name: 'Gandalf'},
+//         { name: 'Frodo' },
+//         { name: 'Hermione'}
+//     ]
+// };
+// const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
 
 app.listen(3000, function() {
   console.log('server listening');
 });
 
+app.use(body.urlencoded({extended: true}));
+app.use(body.json());
+
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
 nunjucks.configure('views', { noCache: true }); // point nunjucks to the proper directory for templates
-nunjucks.render('index.html', locals, function(err, output) {
-  if (err) console.log(err);
-  else console.log(output);
-});
 
+// nunjucks.render('index.html', locals, function(err, output) {
+//   if (err) console.log(err);
+//   else console.log(output);
+// });
 
 app.use(function(req, res, next){
   console.log(req.method, req.url, res.statusCode);
   next();
 });
 
-app.use(function(req, res, next){
-  
-})
+
+
+// app.use(function(req, res, next){
+
+// })
 // app.use('/special/', function(req,res,next) {
 //   console.log('this person is soooo special');
 //   next();
