@@ -20,5 +20,10 @@ app.get('/', function(req,res,next) {
 });
 
 app.get('*', function(req, res, next){
-  res.send('we can handle it all')
+  res.send('we can handle it all');
 });
+
+app.post('*', function(req, res, next) {
+  res.send(`didn\'t actually post ${req.url}, but whatever`);
+//  res.sendStatus(201);
+})
