@@ -6,7 +6,7 @@ let counter = 0;
 
 function add (name, content) {
   counter++;
-  data.push({ name: name, content: content, id: counter });
+  data.unshift({ name: name, content: content, id: counter });
 }
 
 function list () {
