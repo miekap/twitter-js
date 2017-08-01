@@ -3,10 +3,12 @@ const router = express.Router();
 //const router = require('express').Router();
 const tweetBank = require('../tweetBank');
 const path = require('path');
+const body = require('body-parser');
+
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets } );
+  res.render( 'index', { tweets: tweets, showForm: true } );
 });
 
 router.get('/users/:name', function(req, res) {
@@ -26,5 +28,12 @@ router.get('/tweets/:id', function(req, res) {
 //   res.sendFile(path.join(__dirname, '../public/stylesheets/style.css'));
 // });
 router.use(express.static('public'));
+
+router.post('/tweets', function(req, res) {
+  var name = req.body.name;
+  var text = req.body.text;
+  tweetBank.add(name, text);
+  res.redirect('/');
+});
 
 module.exports = router;
